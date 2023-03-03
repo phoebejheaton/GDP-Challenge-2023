@@ -19,9 +19,11 @@ public class FileCoordinator {
         List<Path> paths = listFiles(path);
 
         paths.forEach(x -> {
-            String[] extension = x.toString().split(".");
+            String[] extension = x.toString().split("[.]");
             Reader reader = ReaderFactory.makeReader(extension[extension.length-1]);
-            KeywordCollection.putAll(reader.read(x));
+            System.out.println(x);
+            System.out.println(reader.getFileExtension());
+            //KeywordCollection.putAll(reader.read(x));
         });
 
         return KeywordCollection;

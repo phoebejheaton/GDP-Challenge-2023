@@ -3,21 +3,15 @@ package org.phoebe.gdp2023;
 import java.nio.file.Path;
 import java.util.HashMap;
 
-public class Reader {
-    protected String extensionType = "txt";
+public abstract class Reader {
+    protected String extensionType;
+
+    public Reader (String extensionType) {
+        this.extensionType = extensionType;
+    }
+
     public String getFileExtension() {
-        return this.extensionType;
+        return extensionType;
     }
-    public HashMap<String, Integer> read(Path x) {
-        HashMap<String, Integer> Keywords = new HashMap<String, Integer>();
-
-        Keywords.put("Viruses", 0);
-        Keywords.put("Bugs", 0);
-        Keywords.put("DDOS", 0);
-        Keywords.put("Patches", 0);
-        Keywords.put("Vulnerabilities", 0);
-        Keywords.put("Threat", 0);
-
-        return Keywords;
-    }
+    public abstract HashMap<String, Integer> read(Path x);
 }
