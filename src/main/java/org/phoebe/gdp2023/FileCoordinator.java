@@ -13,21 +13,35 @@ import java.util.stream.Stream;
 public class FileCoordinator {
     private static Map<String, Integer> KeywordCollection = new HashMap<>();
 
-    public static List<Path> fileController(String dir) throws IOException {
+    public static Map<String, Integer> fileController(String dir) throws IOException {
 
         Path path = Paths.get(dir);
         List<Path> paths = listFiles(path);
 
-        //KeywordCollection.putAll(reader.read(x));
-        paths.forEach(FileCoordinator::getExtension);
+        paths.forEach(x -> {
+            Reader reader = getReader(x);
+            if(reader.getFileExtension() == "txt") {
+                try {
+                    KeywordCollection.putAll(reader.read(x));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
-        return paths;
+        return KeywordCollection;
     }
 
     public static String getExtension(Path path){
         String[] extension = path.toString().split("[.]");
         Reader reader = ReaderFactory.makeReader(extension[extension.length-1]);
         return reader.getFileExtension();
+    }
+
+    public static Reader getReader(Path path){
+        String[] extension = path.toString().split("[.]");
+        Reader reader = ReaderFactory.makeReader(extension[extension.length-1]);
+        return reader;
     }
 
 

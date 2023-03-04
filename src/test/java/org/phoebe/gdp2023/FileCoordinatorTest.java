@@ -1,5 +1,6 @@
 package org.phoebe.gdp2023;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -26,7 +27,7 @@ class FileCoordinatorTest {
 
     @BeforeAll
     void pathSetUp() throws IOException {
-        paths = FileCoordinator.fileController(dataDir);
+        //paths = FileCoordinator.fileController(dataDir);
         pathToCyberXML = Paths.get(cyberXMLDir);
         pathToDDOSTxt = Paths.get(DDOSTxtDir);
         pathToOnlineTxt = Paths.get(onlineJSONDir);
@@ -35,18 +36,18 @@ class FileCoordinatorTest {
 
     @Test
     void fileController() {
-        assertEquals(paths.toArray()[0], pathToCyberXML);
-        assertEquals(paths.toArray()[1], pathToDDOSTxt);
-        assertEquals(paths.toArray()[2], pathToOnlineTxt);
-        assertEquals(paths.toArray()[3], pathToSecureTxt);
+        Assertions.assertEquals(paths.toArray()[0], pathToCyberXML);
+        Assertions.assertEquals(paths.toArray()[1], pathToDDOSTxt);
+        Assertions.assertEquals(paths.toArray()[2], pathToOnlineTxt);
+        Assertions.assertEquals(paths.toArray()[3], pathToSecureTxt);
     }
 
     @Test
     void getExtension() {
-        assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[0]), "xml");
-        assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[1]), "txt");
-        assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[2]), "json");
-        assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[3]), "txt");
+        Assertions.assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[0]), "xml");
+        Assertions.assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[1]), "txt");
+        Assertions.assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[2]), "json");
+        Assertions.assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[3]), "txt");
 
     }
 
