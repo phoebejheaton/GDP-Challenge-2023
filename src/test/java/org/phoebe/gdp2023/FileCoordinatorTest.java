@@ -23,14 +23,14 @@ class FileCoordinatorTest {
 
 
     private List<Path> paths;
-    private Path pathToCyberXML, pathToDDOSTxt, pathToOnlineTxt, pathToSecureTxt;
+    private Path pathToCyberXML, pathToDDOSTxt, pathToOnlineJSON, pathToSecureTxt;
 
     @BeforeAll
     void pathSetUp() throws IOException {
         //paths = FileCoordinator.fileController(dataDir);
         pathToCyberXML = Paths.get(cyberXMLDir);
         pathToDDOSTxt = Paths.get(DDOSTxtDir);
-        pathToOnlineTxt = Paths.get(onlineJSONDir);
+        pathToOnlineJSON = Paths.get(onlineJSONDir);
         pathToSecureTxt = Paths.get(secureTxtDir);
     }
 
@@ -38,7 +38,7 @@ class FileCoordinatorTest {
     void fileController() {
         Assertions.assertEquals(paths.toArray()[0], pathToCyberXML);
         Assertions.assertEquals(paths.toArray()[1], pathToDDOSTxt);
-        Assertions.assertEquals(paths.toArray()[2], pathToOnlineTxt);
+        Assertions.assertEquals(paths.toArray()[2], pathToOnlineJSON);
         Assertions.assertEquals(paths.toArray()[3], pathToSecureTxt);
     }
 
