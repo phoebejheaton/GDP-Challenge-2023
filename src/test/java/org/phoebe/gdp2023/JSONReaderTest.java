@@ -2,7 +2,10 @@ package org.phoebe.gdp2023;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,7 +46,7 @@ class JSONReaderTest {
     }
 
     @Test
-    void read() throws IOException {
+    void read() throws IOException, ParserConfigurationException, SAXException, XMLStreamException {
         assertEquals(jsonReader.read(pathToOnlineJson), correctResultOnline);
 
         assertEquals(FileCoordinator.fileController(dataDir),correctResultAll);

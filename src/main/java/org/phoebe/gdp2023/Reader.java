@@ -1,5 +1,9 @@
 package org.phoebe.gdp2023;
 
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -32,7 +36,7 @@ public abstract class Reader {
     public String getFileExtension() {
         return extensionType;
     }
-    public abstract HashMap<String, Integer> read(Path x) throws IOException;
+    public abstract HashMap<String, Integer> read(Path x) throws IOException, ParserConfigurationException, SAXException, XMLStreamException;
 
     public File loadFile(Path path){
         return path.toFile();

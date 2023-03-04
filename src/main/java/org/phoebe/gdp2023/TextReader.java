@@ -3,7 +3,6 @@ package org.phoebe.gdp2023;
 import java.io.*;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class TextReader extends Reader{
     private static final String EXTENSION = "txt";

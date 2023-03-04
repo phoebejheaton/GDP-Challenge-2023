@@ -2,7 +2,10 @@ package org.phoebe.gdp2023;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -51,7 +54,7 @@ class TextReaderTest {
     }
 
     @Test
-    void read() throws IOException {
+    void read() throws IOException, ParserConfigurationException, SAXException, XMLStreamException {
         assertEquals(txtReader.read(pathToDDOSTxt), correctResultDDOS);
         assertEquals(txtReader.read(pathToSecureTxt), correctResultSecure);
 
