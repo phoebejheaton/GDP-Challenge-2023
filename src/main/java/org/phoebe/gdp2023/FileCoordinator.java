@@ -19,12 +19,15 @@ public class FileCoordinator {
         Path path = Paths.get(dir);
         List<Path> paths = listFiles(path);
 
+
         try {
             paths.forEach(x -> {
                 Reader reader = getReader(x);
                 if (reader.getFileExtension() != "xml") {
                     try {
-                        KeywordCollection.putAll(reader.read(x));
+                        Map<String, Integer> keywordTemp;
+                        keywordTemp = reader.read(x);
+                        keywordTemp.forEach((key, value) -> KeywordCollection.merge(key,value, Integer::sum));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
