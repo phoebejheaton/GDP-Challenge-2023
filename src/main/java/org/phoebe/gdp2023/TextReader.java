@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 
 public class TextReader extends Reader{
-    private static final String EXTENSION = "text";
+    private static final String EXTENSION = "txt";
 
     public TextReader() {
         super(EXTENSION);
