@@ -45,12 +45,15 @@ class TextReaderTest {
         correctResultDDOS.put("Bugs", 10);
         correctResultDDOS.put("Viruses", 9);
 
-        correctResultAll.put("Vulnerabilities", 6);
+        correctResultAll.put("Vulnerabilities", 11);
         correctResultAll.put("Bugs", 10);
-        correctResultAll.put("Viruses", 9);
+        correctResultAll.put("Viruses", 14);
         correctResultAll.put("DDOS", 6);
+        correctResultAll.put("Patches", 99);
         correctResultAll.put("Patch", 2);
-        correctResultAll.put("Threat", 3);
+        correctResultAll.put("Vulnerability", 1);
+        correctResultAll.put("Threat", 8);
+        correctResultAll.put("Threats", 5);
     }
 
     @Test

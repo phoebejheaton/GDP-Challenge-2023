@@ -18,6 +18,8 @@ import java.util.stream.Stream;
 public class FileCoordinator {
     private static final Map<String, Integer> KeywordCollection = new HashMap<>();
 
+    
+
     public static Map<String, Integer> fileController(String dir) throws IOException {
 
         Path path = Paths.get(dir);
