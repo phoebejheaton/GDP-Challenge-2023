@@ -1,5 +1,6 @@
 package org.phoebe.gdp2023;
 
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,16 +19,20 @@ public class FileCoordinator {
         Path path = Paths.get(dir);
         List<Path> paths = listFiles(path);
 
-        paths.forEach(x -> {
-            Reader reader = getReader(x);
-            if(reader.getFileExtension() == "txt") {
-                try {
-                    KeywordCollection.putAll(reader.read(x));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+        try {
+            paths.forEach(x -> {
+                Reader reader = getReader(x);
+                if (reader.getFileExtension() != "xml") {
+                    try {
+                        KeywordCollection.putAll(reader.read(x));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
         return KeywordCollection;
     }

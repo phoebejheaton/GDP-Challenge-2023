@@ -1,6 +1,5 @@
 package org.phoebe.gdp2023;
 
-
 import java.io.IOException;
 
 public class Main {
