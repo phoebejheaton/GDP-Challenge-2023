@@ -18,7 +18,19 @@ import java.util.stream.Stream;
 public class FileCoordinator {
     private static final Map<String, Integer> KeywordCollection = new HashMap<>();
 
-    
+    public static Map<String, Integer> mapReducer(Map<String, Integer> map){
+        String[][] duplicates = {{"Vulnerabilities", "Vulnerability"}, {"Threats", "Threat"}, {"Bugs", "Bug"},
+                                {"Patches", "Patch"}, {"Viruses", "Virus"}};
+
+        for(String[] pair: duplicates){
+            if(map.containsKey(pair[0]) && map.containsKey(pair[1])) {
+                map.replace(pair[0], (map.get(pair[1]) + map.get(pair[0])));
+                map.remove(pair[1]);
+            }
+        }
+
+        return map;
+    }
 
     public static Map<String, Integer> fileController(String dir) throws IOException {
 
@@ -40,7 +52,7 @@ public class FileCoordinator {
             System.out.println(e);
         }
 
-        return KeywordCollection;
+        return mapReducer(KeywordCollection);
     }
 
     public static String getExtension(Path path){
@@ -54,8 +66,6 @@ public class FileCoordinator {
         String[] extension = path.toString().split("[.]");
         return ReaderFactory.makeReader(extension[extension.length-1]);
     }
-
-
 
     //copied from https://mkyong.com/java/java-files-walk-examples/#list-all-files
     public static List<Path> listFiles(Path path) throws IOException{
