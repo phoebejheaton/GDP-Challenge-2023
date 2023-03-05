@@ -1,5 +1,11 @@
 package org.phoebe.gdp2023;
 
+//Author: Phoebe Heaton
+//Date: 05/03/23
+//
+//Description: Test class for JSONReader class. Asserts against expected results
+//
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;

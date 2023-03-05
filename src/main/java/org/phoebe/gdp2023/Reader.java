@@ -1,4 +1,14 @@
 package org.phoebe.gdp2023;
+//Author: Phoebe Heaton
+//Date: 05/03/23
+//
+//Description: Abstract class for file reading. Stores extension type of reader and given cyber keywords for subclasses
+// to access
+//
+//Parameters: Class declarations are in FactoryReader
+//
+//Return: N/A
+//
 
 import org.xml.sax.SAXException;
 
@@ -34,7 +44,8 @@ public abstract class Reader {
     public String getFileExtension() {
         return extensionType;
     }
-    public abstract HashMap<String, Integer> read(Path x) throws IOException, ParserConfigurationException, SAXException, XMLStreamException;
+    public abstract HashMap<String, Integer> read(Path x) throws IOException, ParserConfigurationException,
+                                                                    SAXException, XMLStreamException;
 
     public File loadFile(Path path){
         return path.toFile();

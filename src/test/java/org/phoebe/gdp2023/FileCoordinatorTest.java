@@ -1,6 +1,10 @@
 package org.phoebe.gdp2023;
+//Author: Phoebe Heaton
+//Date: 05/03/23
+//
+//Description: Test class for FileCoordinator class. Asserts against expected results
+//
 
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,9 +15,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -30,7 +31,7 @@ class FileCoordinatorTest {
 
     @BeforeAll
     void pathSetUp() throws IOException {
-        //paths = FileCoordinator.fileController(dataDir);
+        paths = FileCoordinator.listFiles(dataDir);
         pathToCyberXML = Paths.get(cyberXMLDir);
         pathToDDOSTxt = Paths.get(DDOSTxtDir);
         pathToOnlineJSON = Paths.get(onlineJSONDir);
@@ -47,11 +48,10 @@ class FileCoordinatorTest {
 
     @Test
     void getExtension() {
-        Assertions.assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[0]), "xml");
-        Assertions.assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[1]), "txt");
-        Assertions.assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[2]), "json");
-        Assertions.assertEquals(FileCoordinator.getExtension((Path) paths.toArray()[3]), "txt");
-
+        Assertions.assertEquals(FileCoordinator.getReader((Path) paths.toArray()[0]).getFileExtension(), "xml");
+        Assertions.assertEquals(FileCoordinator.getReader((Path) paths.toArray()[1]).getFileExtension(), "txt");
+        Assertions.assertEquals(FileCoordinator.getReader((Path) paths.toArray()[2]).getFileExtension(), "json");
+        Assertions.assertEquals(FileCoordinator.getReader((Path) paths.toArray()[3]).getFileExtension(), "txt");
     }
 
 }
